@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0d7bec"],{"77b8":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[e._v("这里可以放一个教程的静态网页地址，当前时间："+e._s(new Date))])},u=[],l=t("2877"),s={},a=Object(l["a"])(s,c,u,!1,null,null,null);n["default"]=a.exports}}]);
