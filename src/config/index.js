@@ -11,7 +11,7 @@ export default {
   /**
    * @description 默认跳转页面，name跳转
    */
-  defaultGoPage: 'home',
+  defaultGoPage: 'user_login',
   /**
    * @description 首页配置的名称
    */

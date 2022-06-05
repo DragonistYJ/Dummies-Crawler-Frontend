@@ -48,11 +48,16 @@ export default {
   },
   computed: {
     appName() {
-      return this.$config.appName
+      return this.$config.appNameEn
     }
   },
   methods: {
     handleLogin() {
+      if ( this.formParams.username === 'admin' & this.formParams.password === '123456') {
+        this.$router.push({ name: this.$config.homeRouteName })
+      } else {
+        alert( '请检查账号和密码' )
+      }
       this.form.validateFields((err, values) => {
         if (err) {
           this.loading = true
