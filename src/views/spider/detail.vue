@@ -3,7 +3,7 @@
   <a-layout class="spider-detail-container" ref="spiderDetail">
     <a-layout>
       <!-- 测试窗口 -->
-      <test-modal :editor="editor" :cell="selectCell" />
+<!--      <test-modal :editor="editor" :cell="selectCell" />-->
       <!-- 历史版本弹窗 -->
       <history-version-modal :id="queryParam.id" :editor="editor" ref="historyVersionModal" />
       <!-- 流程图节点区域 -->
@@ -156,6 +156,7 @@ export default {
           .getModel()
           .getRoot()
           .data.get('spiderName')
+        params.userId = JSON.parse( window.sessionStorage.getItem('sessionUserInfo') )
         saveRequest(params, data => {
           if (this.queryParam.id !== data) {
             this.queryParam.id = data

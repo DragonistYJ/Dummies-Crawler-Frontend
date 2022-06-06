@@ -28,12 +28,23 @@
           size="large"
           type="primary"
         >登录</a-button>
+        <br>
+        <br>
+        <a-button
+            :loading="loading"
+            @click="handleRegister"
+            block
+            shape="round"
+            size="large"
+            type="primary"
+        >注册</a-button>
       </a-card>
     </a-col>
   </a-row>
 </template>
 <script>
-// import { login } from '@/api/user.js'
+
+import { login } from '@/api/user.js'
 
 export default {
   data() {
@@ -53,29 +64,37 @@ export default {
   },
   methods: {
     handleLogin() {
-      if ( this.formParams.username === 'admin' & this.formParams.password === '123456') {
-        this.$router.push({ name: this.$config.homeRouteName })
-      } else {
-        alert( '请检查账号和密码' )
+      if (this.formParams.username.length === 0 || this.formParams.password.length === 0 ) {
+        alert('请输入正确的账号或密码')
+        return false
       }
       this.form.validateFields((err, values) => {
         if (err) {
           this.loading = true
           console.log('Received values of form: ', values)
           return false
-          // login(
-          //   this.formParams,
-          //   data => {
-          //     this.$store.commit('setUserInfo', data.data)
-          //     this.$router.push({ name: this.$config.homeRouteName })
-          //   },
-          //   data => {
-          //     this.$Message.error(data.msg)
-          //     this.loading = false
-          //   }
-          // )
+        } else {
+          login(
+            this.formParams,
+            data => {
+              if (data.code === 200) {
+                this.$store.commit('setUserInfo', data.data.id)
+                this.$router.push({ name: this.$config.homeRouteName })
+              } else {
+                alert(data.message)
+                this.loading = false
+              }
+            },
+            data => {
+              this.$Message.error(data.msg)
+              this.loading = false
+            }
+          )
         }
       })
+    },
+    handleRegister() {
+      this.$router.push( '/register' )
     }
   }
 }

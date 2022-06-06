@@ -98,7 +98,11 @@ class HttpRequest {
   send(url, params, successCallback, errorCallback, config) {
     config = config || {}
     config.url = url + this._suffix
-    if (this._requestConfig.defaultConfig.method === 'post') {
+    let method = this._requestConfig.defaultConfig.method
+    if ( config.url === 'spider/list') {
+      method = 'get'
+    }
+    if (method === 'post') {
       config.data = params
     } else {
       config.params = params

@@ -53,14 +53,14 @@ export default {
       // 自定义添加头部
       headers: {
         // ;charset=UTF-8
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       },
       // `transformRequest` 允许在向服务器发送前，修改请求数据
       // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
       // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
-      transformRequest: [function (data) {
-        return qsStringify(data)
-      }],
+      // transformRequest: [function (data) {
+      //   return qsStringify(data)
+      // }],
       paramsSerializer(params) {
         return qsStringify(params)
       }

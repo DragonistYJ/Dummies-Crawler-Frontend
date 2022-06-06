@@ -49,6 +49,16 @@ export default [
     }
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/user/user-register'),
+    meta: {
+      title: '用户注册',
+      hideInBread: 1,
+      hideInMenu: 1
+    }
+  },
+  {
     path: '/_spider_list',
     name: '_spider_list',
     component: () => import('@/components/main'),

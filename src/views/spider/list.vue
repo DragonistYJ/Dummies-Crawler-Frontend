@@ -135,7 +135,8 @@ export default {
       queryParam: {
         page: 1,
         limit: 10,
-        name: ''
+        name: '',
+        user: ''
       },
       pagination: {
         current: 1,
@@ -208,6 +209,7 @@ export default {
         id: this.cron.row.id,
         cron: val
       }
+      console.log(params)
       cronRequest(
         params,
         data => {
@@ -260,6 +262,7 @@ export default {
   },
   mounted() {
     this.listAction(this.queryParam.page)
+    this.queryParam.user = JSON.parse( window.sessionStorage.getItem('sessionUserInfo') )
   }
 }
 </script>
