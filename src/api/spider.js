@@ -46,6 +46,11 @@ export const runRequest = (id, succFun, errFun) => {
 export const logDownloadRequest = (logId, taskId) => {
   window.open(suffix + 'log/download?id=' + logId + '&taskId=' + (taskId || ''))
 }
+
+// 下载csv文件
+export const csvDownloadRequest = (taskId, filename) => {
+  window.open(suffix + 'file/' + taskId + '/' + 'test.xls')
+}
 // 查询除id外的其它流程
 export const otherRequest = (id, succFun, errFun) => {
   request.send(
@@ -72,7 +77,7 @@ export const xmlRequest = (id, succFun, errFun) => {
 // 保存流程内容
 export const saveRequest = (params, succFun, errFun) => {
   params.name = params.name || '未定义名称'
-  request.send(suffix + 'save', params, succFun, errFun, { responseType: 'text' })
+  request.post(suffix + 'save', params, succFun, errFun, { responseType: 'text' })
 }
 // 查询id的历史记录
 export const historyRequest = (id, succFun, errFun) => {

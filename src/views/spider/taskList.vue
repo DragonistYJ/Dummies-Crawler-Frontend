@@ -12,6 +12,8 @@
         <a-divider type="vertical" />-->
         <a @click="logDownloadAction(value)">下载日志</a>
         <a-divider type="vertical" />
+        <a @click="csvDownloadAction(value)">下载文件</a>
+        <a-divider type="vertical" />
         <a-popconfirm
           @confirm="removeAction(value)"
           cancel-text="取消"
@@ -28,7 +30,7 @@
 
 <script>
 import { listRequest, removeRequest } from '@/api/task.js'
-import { logDownloadRequest } from '@/api/spider.js'
+import { logDownloadRequest, csvDownloadRequest } from '@/api/spider.js'
 
 export default {
   data() {
@@ -110,7 +112,11 @@ export default {
     },
     // 下载日志文件
     logDownloadAction(taskId) {
+      console.log(this.queryParam.flowId, taskId)
       logDownloadRequest(this.queryParam.flowId, taskId)
+    },
+    csvDownloadAction(taskId) {
+      csvDownloadRequest(this.queryParam.flowId, taskId)
     }
   },
   mounted() {

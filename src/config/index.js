@@ -43,7 +43,7 @@ export default {
       baseURL: '',
       devBaseURL: '',
       // 默认请求方法
-      method: 'post',
+      method: 'get',
       // 请求超时时间（毫秒）
       timeout: 0,
       // 是否携带cookie信息

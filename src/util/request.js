@@ -99,8 +99,8 @@ class HttpRequest {
     config = config || {}
     config.url = url + this._suffix
     let method = this._requestConfig.defaultConfig.method
-    if ( config.url === 'spider/list') {
-      method = 'get'
+    if ( config.url === 'spider/save' || config.url === 'user/login' || config.url === 'user/login' ) {
+      method = 'post'
     }
     if (method === 'post') {
       config.data = params
