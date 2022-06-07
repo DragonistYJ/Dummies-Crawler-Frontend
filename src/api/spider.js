@@ -49,8 +49,7 @@ export const logDownloadRequest = (logId, taskId) => {
 
 // 下载csv文件
 export const csvDownloadRequest = (taskId, filename, succFun, errFun) => {
-  // window.open('file/' + taskId + '/' + 'test.xls')
-  request.send('file/' + taskId + '/' + 'hello.xls', {}, succFun, errFun)
+  window.open('file/' + taskId + '/' + 'hello.xls')
 }
 
 // 查询除id外的其它流程
