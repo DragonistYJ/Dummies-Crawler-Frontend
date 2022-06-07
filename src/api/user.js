@@ -1,11 +1,11 @@
 import request from '@/util/request.js'
 
 export const register = (params, succFun, errFun) => {
-  request.send('user/register', params, succFun, errFun)
+  request.post('user/register', params, succFun, errFun)
 }
 
 export const login = (params, succFun, errFun) => {
-  request.send('user/login', params, succFun, errFun)
+  request.post('user/login', params, succFun, errFun)
 }
 
 export const logout = (succFun, errFun) => {
