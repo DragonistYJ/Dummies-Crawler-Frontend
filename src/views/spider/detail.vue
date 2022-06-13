@@ -1,11 +1,10 @@
-/* eslint-disable vue/valid-v-for */
 <template>
   <a-layout class="spider-detail-container" ref="spiderDetail">
     <a-layout>
       <!-- 测试窗口 -->
-<!--      <test-modal :editor="editor" :cell="selectCell" />-->
+      <!--      <test-modal :editor="editor" :cell="selectCell" />-->
       <!-- 历史版本弹窗 -->
-      <history-version-modal :id="queryParam.id" :editor="editor" ref="historyVersionModal" />
+      <history-version-modal :id="queryParam.id" :editor="editor" ref="historyVersionModal"/>
       <!-- 流程图节点区域 -->
       <a-layout-sider width="60px">
         <div class="spider-toolbar-container" ref="spiderToolbarContainer"></div>
@@ -16,20 +15,20 @@
           <template v-for="(item, index) in headerBtns">
             <a-tooltip :key="'header-icon-' + index" :title="item.title" placement="bottom" v-if="item.type === 'ant'">
               <a-icon :type="item.icon" @click="headerBtnItemHandle(item.click)"
-                :style="{ fontSize: '34px', color: '#90AACB', padding: '8px' }"></a-icon>
+                      :style="{ fontSize: '34px', color: '#90AACB', padding: '8px' }"></a-icon>
             </a-tooltip>
             <a-divider :key="index" type="vertical" v-else-if="item.type === 'divider'"/>
           </template>
         </div>
-        <div class="spider-editor-container" ref="spiderEditorContainer" v-show="showXMLPage !== true"></div>
+        <div class="spider-editor-container" ref="spiderEditorContainer" v-show="!showXMLPage"/>
         <!-- xml编辑器 -->
-        <code-editor v-show="showXMLPage === true" height="100%" ref="xmlEditor" :option="{ language: 'xml' }"
-          @change="val => editor.setXML(val)"></code-editor>
+        <code-editor v-show="showXMLPage" height="100%" ref="xmlEditor" :option="{ language: 'xml' }"
+                     @change="val => editor.setXML(val)"/>
       </a-layout-content>
     </a-layout>
     <!-- 配置 -->
-    <a-layout-footer class="spider-properties-container">
-      <component :is="currentTemplate" :editor="editor" :cell="selectCell" />
+    <a-layout-footer class="spider-properties-container" style="height: 24em">
+      <component :is="currentTemplate" :editor="editor" :cell="selectCell"/>
     </a-layout-footer>
   </a-layout>
 </template>
@@ -65,7 +64,7 @@ export default {
   },
   computed: {
     currentTemplate() {
-      var template = ''
+      let template = ''
       if (this.selectCell.edge === true || this.selectCell.edge === 1) {
         template = 'edge'
       } else if (this.selectCell.data && (this.selectCell.data.get === undefined || this.selectCell.data.get('shape') === undefined)) {
@@ -92,11 +91,9 @@ export default {
         let key = e.key
         this.headerBtns.forEach(element => {
           if (element.exeFunKey && element.exeFunKey.length > 0) {
-            if (
-              (element.exeFunKey.indexOf('ctrl') !== -1 && e.ctrlKey === true && element.exeFunKey.indexOf(key.toLowerCase()) !== -1) ||
-              (element.exeFunKey.indexOf('alt') !== -1 && e.altKey === true && element.exeFunKey.indexOf(key.toLowerCase()) !== -1) ||
-              (element.exeFunKey.length === 1 && element.exeFunKey.indexOf(key.toLowerCase()) !== -1)
-            ) {
+            if ((element.exeFunKey.indexOf('ctrl') !== -1 && e.ctrlKey === true && element.exeFunKey.indexOf(key.toLowerCase()) !== -1) ||
+                (element.exeFunKey.indexOf('alt') !== -1 && e.altKey === true && element.exeFunKey.indexOf(key.toLowerCase()) !== -1) ||
+                (element.exeFunKey.length === 1 && element.exeFunKey.indexOf(key.toLowerCase()) !== -1)) {
               // 这里需要执行点什么方法
               this.headerBtnItemHandle(element.click)
               // 阻止其它事件
@@ -152,11 +149,8 @@ export default {
       this.validXML(() => {
         let params = this.queryParam
         params.xml = this.editor.getXML()
-        params.name = this.editor.graph
-          .getModel()
-          .getRoot()
-          .data.get('spiderName')
-        params.userId = JSON.parse( window.sessionStorage.getItem('sessionUserInfo') )
+        params.name = this.editor.graph.getModel().getRoot().data.get('spiderName')
+        params.userId = JSON.parse(window.sessionStorage.getItem('sessionUserInfo'))
         saveRequest(params, data => {
           if (this.queryParam.id !== data) {
             this.queryParam.id = data
@@ -168,7 +162,7 @@ export default {
     },
     // 验证流程的正确性
     validXML(callback) {
-      var cell = this.editor.valid()
+      let cell = this.editor.valid()
       if (cell) {
         this.$confirm({
           title: '异常处理',

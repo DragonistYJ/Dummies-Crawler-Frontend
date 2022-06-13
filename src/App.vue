@@ -1,9 +1,8 @@
 <template>
-  <div id="app" v-tittle data-title="Dummies-Crawler">
+  <div id="app" data-title="Dummies-Crawler">
     <a-config-provider :locale="zhCN">
       <router-view />
     </a-config-provider>
-
   </div>
 </template>
 

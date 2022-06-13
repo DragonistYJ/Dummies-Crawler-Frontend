@@ -15,7 +15,6 @@ import './assets/less/index.less'
 Vue.config.productionTip = false
 //  全局挂载axios
 Vue.config.$axios = axios
-axios.default.baseUrl = 'http://221.236.30.70:9010'
 Vue.use(Antd)
 Vue.use(VueCoreVideoPlayer)
 /**

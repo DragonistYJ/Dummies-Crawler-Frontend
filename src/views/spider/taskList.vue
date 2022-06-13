@@ -1,26 +1,24 @@
 <template>
   <a-card>
     <a-table
-      :columns="columns"
-      :data-source="data.records"
-      :pagination="pagination"
-      @change="handleChange"
-      rowKey="id"
-    >
+        :columns="columns"
+        :data-source="data.records"
+        :pagination="pagination"
+        @change="handleChange"
+        rowKey="id">
       <template slot="operation" slot-scope="value">
         <!-- <a>查看日志</a>
         <a-divider type="vertical" />-->
         <a @click="logDownloadAction(value)">下载日志</a>
-        <a-divider type="vertical" />
+        <a-divider type="vertical"/>
         <a @click="csvDownloadAction(value)">下载文件</a>
-        <a-divider type="vertical" />
+        <a-divider type="vertical"/>
         <a-popconfirm
-          @confirm="removeAction(value)"
-          cancel-text="取消"
-          ok-text="确定"
-          placement="topRight"
-          title="您确定要删除此记录吗？"
-        >
+            @confirm="removeAction(value)"
+            cancel-text="取消"
+            ok-text="确定"
+            placement="topRight"
+            title="您确定要删除此记录吗？">
           <a>删除记录</a>
         </a-popconfirm>
       </template>
@@ -92,15 +90,15 @@ export default {
     },
     removeAction(id) {
       removeRequest(
-        id,
-        data => {
-          this.$message.success(data.message)
-          this.listAction()
-        },
-        data => {
-          this.$message.error(data.message)
-          this.listAction()
-        }
+          id,
+          data => {
+            this.$message.success(data.message)
+            this.listAction()
+          },
+          data => {
+            this.$message.error(data.message)
+            this.listAction()
+          }
       )
     },
     // 分页切换

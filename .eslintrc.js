@@ -13,10 +13,11 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     'space-before-function-paren': 0,
-    "vue/no-parsing-error": [2, {
-      "x-invalid-end-tag": false
+    'vue/no-parsing-error': [2, {
+      'x-invalid-end-tag': false
     }],
-    'space-in-parens': [0, 'never'] //小括号里面要不要有空格
+    'space-in-parens': [0, 'never'], //小括号里面要不要有空格
+    'indent': ['off', 2],
   },
   parserOptions: {
     parser: 'babel-eslint'

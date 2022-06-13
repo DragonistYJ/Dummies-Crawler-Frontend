@@ -47,8 +47,8 @@ module.exports = {
     public: 'localhost:3000',
     proxy: {
       '/': {
-        // target: 'http://localhost:8088',
-        target: 'http://221.236.30.70:9010',
+        target: 'http://localhost:8088',
+        // target: 'http://221.236.30.70:9010',
         ws: false,
         changeOrigin: true,
         secure: false
