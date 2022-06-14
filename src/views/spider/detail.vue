@@ -35,9 +35,9 @@
 
 <script>
 import HeaderBtnsJson from './json/header-btns.json'
-import { SpiderEditor, JsonProperty } from '@/libs/spidereditor/spider-editor'
+import { JsonProperty, SpiderEditor } from '@/libs/spidereditor/spider-editor'
 import { loadShapes } from '@/libs/spidereditor/editor'
-import { xmlRequest, saveRequest } from '@/api/spider.js'
+import { xmlRequest } from '@/api/spider.js'
 import HistoryVersionModal from './historyVersionModal.vue'
 import CodeEditor from '@/components/code-editor'
 import TestModal from './testModal.vue'
@@ -147,17 +147,19 @@ export default {
     // 保存流程内容
     saveAction() {
       this.validXML(() => {
-        let params = this.queryParam
+        let params = {}
+        params.id = this.queryParam.id
         params.xml = this.editor.getXML()
-        params.name = this.editor.graph.getModel().getRoot().data.get('spiderName')
+        params.name = this.editor.graph.getModel().getRoot().data.get('spiderName') || '未定义名称'
         params.userId = JSON.parse(window.sessionStorage.getItem('sessionUserInfo'))
-        saveRequest(params, data => {
-          if (this.queryParam.id !== data) {
-            this.queryParam.id = data
-            this.$router.push('/spider_detail/' + data)
-          }
-          this.$message.success('保存成功')
-        })
+        this.$axios.post('spider/save', params)
+            .then(res => {
+              if (this.queryParam.id !== res['data']) {
+                this.queryParam.id = res['data']
+                this.$router.replace('/spider_detail/' + res['data'])
+              }
+              this.$message.success('保存成功')
+            })
       })
     },
     // 验证流程的正确性

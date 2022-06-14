@@ -5,7 +5,7 @@
  */
 const defaultUserInfo = {
   'id': '',
-  'status': 0,
+  'status': 1,
   'createDate': null,
   'updateDate': null,
   'note': null,

@@ -115,6 +115,7 @@ export default {
           this.dataSource.push(paramsData)
           break
       }
+      this.setAllDataToCell()
     },
     // 弹窗确认按钮
     hideModal(show) {

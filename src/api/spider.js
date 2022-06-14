@@ -78,7 +78,7 @@ export const xmlRequest = (id, succFun, errFun) => {
 // 保存流程内容
 export const saveRequest = (params, succFun, errFun) => {
   params.name = params.name || '未定义名称'
-  request.post(suffix + 'save', params, succFun, errFun, { responseType: 'text' })
+  request.post(suffix + 'save', params, succFun, errFun)
 }
 // 查询id的历史记录
 export const historyRequest = (id, succFun, errFun) => {

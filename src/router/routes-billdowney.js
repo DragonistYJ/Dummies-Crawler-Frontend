@@ -21,8 +21,7 @@ export default [
     meta: {
       title: '_首页',
       icon: 'home',
-      hideInBread: 1,
-      hideInMenu: 1
+      hideInBread: 1
     },
     children: [
       {

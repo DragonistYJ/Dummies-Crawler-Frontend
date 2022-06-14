@@ -21,6 +21,7 @@ Vue.use(VueCoreVideoPlayer)
  * @description 全局注册应用配置
  */
 Vue.prototype.$config = config
+Vue.prototype.$axios = axios
 
 new Vue({
   axios,

@@ -10,8 +10,8 @@
       <a-layout-header class="header-con">
         <header-bar></header-bar>
       </a-layout-header>
-      <a-layout-content class="main-content">
-        <div style="height:100%;">
+      <a-layout-content class="main-content" style="overflow-y: hidden">
+        <div style="height:100%">
           <router-view />
         </div>
       </a-layout-content>
