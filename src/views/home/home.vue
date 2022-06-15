@@ -6,8 +6,8 @@
       <img :src="require('../../assets/images/logo.png')" alt="" style="height: 10em; width: 10em"/>
     </div>
     <div class="player-container">
-      <vue-core-video-player :cover="'https://img1.wxzxzj.com/vpc-example-cover-the-garden.png'"
-                             :src="'https://www.bilibili.com/bangumi/play/ss12044/?from=search&seid=9670386519186098373'"
+      <vue-core-video-player :cover="'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F13%2F20200613231825_2tKc4.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1657780566&t=2ef16e7fb520eb731498345d1644b42b'"
+                             :src="require('../../assets/video/show.mp4')"
                              @loadedmetadata="loaded"
                              @play="playFunc"
                              @pause="pauseFunc"
